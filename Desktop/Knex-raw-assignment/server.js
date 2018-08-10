@@ -42,18 +42,18 @@ app.post('/posts',
       });
    });    //never send ID, texts req '' or "".
 
-app.delete('/posts/:id', function(req, res){
+  app.delete('/posts/:id', function(req, res){
      knex.raw(`DELETE FROM posts1 WHERE id = ${req.params.id}`).then(()=>{ //req.[params not body].id
        res.sendStatus(200);
      });
    });
 
-app.patch('/posts/:id', function(req, res){
+   app.patch('/posts/:id', function(req, res){
        knex.raw(`UPDATE posts1 SET content='${req.body.content}',author='${req.body.author}',upvotes='${req.body.upvotes}' WHERE id=${req.params.id}`).then(()=>{
          res.sendStatus(200);
        });
      });
 
-app.listen(port, function() {
+  app.listen(port, function() {
        console.log('Listening on', port);
      });
